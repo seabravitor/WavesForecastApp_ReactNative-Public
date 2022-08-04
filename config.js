@@ -1,0 +1,6 @@
+import {REACT_APP_AUTOCOMPLETE, REACT_APP_STORMGLASS} from '@env'
+
+export default {
+    REACT_APP_AUTOCOMPLETE,
+    REACT_APP_STORMGLASS
+}

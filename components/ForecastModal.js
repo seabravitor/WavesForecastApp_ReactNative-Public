@@ -7,7 +7,8 @@ import Conditions from './Conditions';
 import * as Location from 'expo-location';
 import axios from 'axios';
 import DateHour from './DateHour';
-
+import config from '../config'
+// navigator.geolocation = require('@react-native-community/geolocation');
 
 export default function ForecastModal() {
     	// API LOCATIONs
@@ -44,7 +45,7 @@ export default function ForecastModal() {
 		url: `https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}&source=${source}`,
 		headers: {
 			Authorization:
-				process.env.REACT_APP_STORMGLASS
+				config.REACT_APP_STORMGLASS
 		},
 	};
 
@@ -54,8 +55,7 @@ export default function ForecastModal() {
 		console.log('your longitude is:', lng);
 		await axios(options)
 			.then((response) => {
-				console.log('AXIOS WORKING RESPONSE', response);
-				console.log('AXIOS WORKING RESPONSE.DATA.HOURS', response.data.hours);
+				console.log('AXIOS WORKING RESPONSE.DATA.HOURS');
 				compileHours(response.data.hours);
 			})
 			.catch((error) => {
@@ -98,16 +98,6 @@ export default function ForecastModal() {
 				return finalData;
 			}
 		});
-        // if (finalData !== undefined) {
-        //     console.log('IM HERE');
-		// 	return <DateHour data={finalData}/>
-		// } else {
-		// 	return (
-		// 		null
-		// 	);
-		// }
-		// console.log('Thats the data for the next 07 days =>', finalData);
-        // displayDropdown(finalData)
 	};
 
     let displayDropdown = (finalData) => {
@@ -116,7 +106,7 @@ export default function ForecastModal() {
 			return <DateHour data={finalData}/>
 		} else {
 			return (
-				null
+				console.log('is something happening here?')
 			);
 		}
     }
@@ -124,16 +114,17 @@ export default function ForecastModal() {
     // START DISPLAYING
     return <View style={styles.search}>
 					<GooglePlacesAutocomplete
-						placeholder="Search"
+						placeholder='Edit Location'
 						fetchDetails={true}
-						currentLocation={true}
+						// currentLocation={true}
+						// currentLocationLabel='Current location'
 						onPress={(data, details = null) => {
 							setLat(details.geometry.location.lat);
 							setLng(details.geometry.location.lng);
 							handleSubmit();
 						}}
 						query={{
-							key: `${process.env.REACT_APP_AUTOCOMPLETE}`,
+							key: `${config.REACT_APP_AUTOCOMPLETE}`,
 							language: 'en',
 							types: 'geocode',
 						}}
@@ -168,7 +159,7 @@ export default function ForecastModal() {
 						Current Location
 					</Text>
 				</View>
-
+				
 				{displayDropdown()}
 
 			</View>
@@ -178,14 +169,14 @@ const styles = StyleSheet.create({
 
     search: {
 		position: 'absolute',
-		marginTop: '10%',
+		marginTop: '15%',
 		width: '90%'
 	},
 	grid: {
 		position: 'absolute',
 		flexDirection: 'row',
 		justifyContent: 'flex-start',
-		marginTop: '25%',
+		marginTop: '30%',
 		alignSelf: 'flex-end',
 	},
 	currentLocation: {
