@@ -32,5 +32,19 @@
   "devDependencies": {
     "@babel/core": "^7.9.0"
   },
-  "private": true
+  "private": true,
+  "name": "wavesforecastapp_reactnative-public",
+  "description": "With Ripple Waves Forecast application you can find out how are the weather and the waves on your current location or any other city in the world.",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seabravitor/WavesForecastApp_ReactNative-Public.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seabravitor/WavesForecastApp_ReactNative-Public/issues"
+  },
+  "homepage": "https://github.com/seabravitor/WavesForecastApp_ReactNative-Public#readme"
 }

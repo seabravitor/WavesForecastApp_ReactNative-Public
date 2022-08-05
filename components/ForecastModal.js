@@ -35,7 +35,7 @@ export default function ForecastModal() {
 	// // set options to dropdown
 	// const [items, setItems] = useState([]);
     // const [value, setValue] = useState(undefined);
-    const [finalData, setFinalData] = useState([])
+    const [finalData, setFinalData] = useState()
 
 	const params =
 		'waveHeight,waveDirection,windSpeed,windDirection20m,waterTemperature,airTemperature,precipitation,cloudCover';
@@ -90,7 +90,7 @@ export default function ForecastModal() {
 	// 		cloudCover: response.data.hours[0].cloudCover.sg,
 
 	async function compileHours(hours){
-		// var finalData = [];
+		var finalData = [];
 		await hours.forEach(function (ele, i) {
 			if (i % 24 === 0) {
 				// GETTING THE DATA OF NEXT 07 DAYS HOURS 00:00
@@ -99,17 +99,6 @@ export default function ForecastModal() {
 			}
 		});
 	};
-
-    let displayDropdown = (finalData) => {
-        if (finalData !== undefined) {
-			console.log("Im here")
-			return <DateHour data={finalData}/>
-		} else {
-			return (
-				console.log('is something happening here?')
-			);
-		}
-    }
 
     // START DISPLAYING
     return <View style={styles.search}>
@@ -160,13 +149,12 @@ export default function ForecastModal() {
 					</Text>
 				</View>
 				
-				{displayDropdown()}
+				{finalData ? <DateHour data={finalData}/> : null}
 
 			</View>
     }
 
 const styles = StyleSheet.create({
-
     search: {
 		position: 'absolute',
 		marginTop: '15%',

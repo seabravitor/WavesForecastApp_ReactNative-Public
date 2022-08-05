@@ -78,7 +78,7 @@ return   <View>
                         open={props.open}
                         value={props.value}
                         items={props.items}
-                        placeholder="Choose a day"
+                        placeholder="TEST a day"
                         setOpen={setOpen}
                         setValue={setValue}
                         setItems={defineItems}
@@ -101,7 +101,8 @@ return   <View>
                     />
                 </View>
 				
-                {displayConditions(props.value)}
+                {/* {displayConditions(props.value)} */}
+				<View>{value ? <Conditions waves={value}/> : null}</View>
 				
             </View>
 }
