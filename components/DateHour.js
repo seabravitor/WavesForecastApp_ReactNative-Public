@@ -10,9 +10,9 @@ export default function DateHour(props) {
 	// open dropdown menu
 	// set real value to dropdown optios
 	// set options to dropdown
-	const [items, setItems] = useState([]);
-    const [value, setValue] = useState(undefined);
+	const [value, setValue] = useState(null);
     const [open, setOpen] = useState(false);
+	const [items, setItems] = useState([]);
 
     let defineItems = (data) => {
 		console.log('IM HERE', data)
@@ -75,15 +75,15 @@ let displayConditions = (value) => {
 };
 
 return   <View>
-                {/* <View style={styles.dropdown}>
+                <View style={styles.dropdown}>
                     <DropDownPicker
-                        open={props.open}
-                        value={props.value}
-                        items={props.items}
+                        open={open}
+                        value={value}
+                        items={items}
                         placeholder="Choose a day"
                         setOpen={setOpen}
                         setValue={setValue}
-                        setItems={defineItems}
+                        setItems={setItems}
                         zIndex={1}
                         listMode="SCROLLVIEW"
                         dropDownDirection="BOTTOM"
@@ -101,7 +101,7 @@ return   <View>
                         // onChangeValue={() => {}}
                         onPress={(open) => console.log('was the picker open?', open)}
                     />
-                </View> */}
+                </View>
 				
                 {displayConditions(props.value)}
 				{/* <View>{value ? <Conditions waves={value}/> : null}</View> */}
@@ -110,14 +110,14 @@ return   <View>
 }
 
 const styles = StyleSheet.create({
-	// dropdown: {
-	// 	position: 'absolute',
-	// 	alignSelf: 'center',
-	// 	marginTop: '15%',
-	// 	marginBottom: '10%',
-	// 	width: '60%',
-	// 	zIndex: 10,
-	// },
+	dropdown: {
+		position: 'absolute',
+		alignSelf: 'center',
+		marginTop: '15%',
+		marginBottom: '10%',
+		width: '60%',
+		// zIndex: 10,
+	},
 	// selectDay: {
 	// 	position: 'absolute',
 	// 	alignSelf: 'flex-end',
