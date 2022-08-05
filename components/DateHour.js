@@ -15,6 +15,7 @@ export default function DateHour(props) {
     const [open, setOpen] = useState(false);
 
     let defineItems = (data) => {
+		console.log('IM HERE', data)
 		setItems([
 			{
 				id: 1,
@@ -67,18 +68,19 @@ let displayConditions = (value) => {
             // <Text style={styles.selectDay}>
             // 	When do you wanna surf?
             // </Text>
-            null
+            // null
+			console.log('is this component being called???')
         );
     }
 };
 
 return   <View>
-                <View style={styles.dropdown}>
+                {/* <View style={styles.dropdown}>
                     <DropDownPicker
                         open={props.open}
                         value={props.value}
                         items={props.items}
-                        placeholder="TEST a day"
+                        placeholder="Choose a day"
                         setOpen={setOpen}
                         setValue={setValue}
                         setItems={defineItems}
@@ -99,30 +101,30 @@ return   <View>
                         // onChangeValue={() => {}}
                         onPress={(open) => console.log('was the picker open?', open)}
                     />
-                </View>
+                </View> */}
 				
-                {/* {displayConditions(props.value)} */}
-				<View>{value ? <Conditions waves={value}/> : null}</View>
+                {displayConditions(props.value)}
+				{/* <View>{value ? <Conditions waves={value}/> : null}</View> */}
 				
             </View>
 }
 
 const styles = StyleSheet.create({
-	dropdown: {
-		position: 'absolute',
-		alignSelf: 'center',
-		marginTop: '15%',
-		marginBottom: '10%',
-		width: '60%',
-		zIndex: 10,
-	},
-	selectDay: {
-		position: 'absolute',
-		alignSelf: 'flex-end',
-		fontWeight: 'bold',
-		marginTop: '12%',
-		paddingRight: '5%',
-		marginBottom: '5%',
-	}
+	// dropdown: {
+	// 	position: 'absolute',
+	// 	alignSelf: 'center',
+	// 	marginTop: '15%',
+	// 	marginBottom: '10%',
+	// 	width: '60%',
+	// 	zIndex: 10,
+	// },
+	// selectDay: {
+	// 	position: 'absolute',
+	// 	alignSelf: 'flex-end',
+	// 	fontWeight: 'bold',
+	// 	marginTop: '12%',
+	// 	paddingRight: '5%',
+	// 	marginBottom: '5%',
+	// }
 })
    
