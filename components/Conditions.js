@@ -5,9 +5,8 @@ import FetchedData from './Sub_Conditions/FetchedData';
 import { RFPercentage } from 'react-native-responsive-fontsize';
 
 export default function Conditions(props) {
-	console.log('Im props waves', props.waves);
-
-
+	console.log('CONDITIONS CALLED!!!')
+	// console.log('Im props waves', props);
 
 	return (
 		<View>

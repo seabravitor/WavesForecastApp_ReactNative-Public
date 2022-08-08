@@ -89,17 +89,17 @@ export default function ForecastModal() {
 	// 		precipitation: response.data.hours[0].precipitation.sg,
 	// 		cloudCover: response.data.hours[0].cloudCover.sg,
 
-	async function compileHours(hours){
+	function compileHours(hours){
 		// console.log(hours)
-		var arr = [];
-		await hours.forEach(function (ele, i, arr) {
-			if (i % 24 === 0) {
+		var arr = []
+		hours.forEach(function (ele, i, arr) {
+			if (i % 72 === 0) {
 				// GETTING THE DATA OF NEXT 07 DAYS HOURS 00:00
 				arr.push(ele)
 				setFinalData(arr)
+				return finalData
 			}
 		});
-		return finalData
 	};
 
     // START DISPLAYING
@@ -152,7 +152,6 @@ export default function ForecastModal() {
 				</View>
 				
 				{!finalData.length ? null : <DateHour data={finalData}/>}
-				<Text>{!finalData.length ? 'true' : 'false'}</Text>
 
 			</View>
     }

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { StyleSheet, Text, View} from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { RFPercentage } from 'react-native-responsive-fontsize';
@@ -14,8 +14,13 @@ export default function DateHour(props) {
     const [open, setOpen] = useState(false);
 	const [items, setItems] = useState([]);
 
+	useEffect(() => {
+			defineItems(props);
+	}, []);
+
+
     let defineItems = (data) => {
-		console.log('IM HERE', data)
+		console.log('DATEHOUR CALLED')
 		setItems([
 			{
 				id: 1,
@@ -61,6 +66,7 @@ export default function DateHour(props) {
 	};
 
 let displayConditions = (value) => {
+	console.log('WHAT IS VALUE?', value)
     if (value !== undefined) {
         return <Conditions waves={value} />;
     } else {
@@ -69,7 +75,7 @@ let displayConditions = (value) => {
             // 	When do you wanna surf?
             // </Text>
             // null
-			console.log('is this component being called???')
+			console.log('CONDITIONS ARE EMPTY')
         );
     }
 };
@@ -103,8 +109,8 @@ return   <View>
                     />
                 </View>
 				
-                {displayConditions(props.value)}
-				{/* <View>{value ? <Conditions waves={value}/> : null}</View> */}
+                {displayConditions(value)}
+				{/* <View>{!items.length ? null : <Conditions waves={items}/>}</View> */}
 				
             </View>
 }
