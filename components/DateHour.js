@@ -10,14 +10,14 @@ export default function DateHour(props) {
 	// open dropdown menu
 	// set real value to dropdown optios
 	// set options to dropdown
+	const [open, setOpen] = useState(false);
 	const [value, setValue] = useState(null);
-    const [open, setOpen] = useState(false);
 	const [items, setItems] = useState([]);
+
 
 	useEffect(() => {
 			defineItems(props);
 	}, []);
-
 
     let defineItems = (data) => {
 		console.log('DATEHOUR CALLED')
@@ -63,21 +63,8 @@ export default function DateHour(props) {
 				value: props.data[7],
 			},
 		]);
-	};
-
-let displayConditions = (value) => {
-	console.log('WHAT IS VALUE?', value)
-    if (value !== undefined) {
-        return <Conditions waves={value} />;
-    } else {
-        return (
-            // <Text style={styles.selectDay}>
-            // 	When do you wanna surf?
-            // </Text>
-            // null
-			console.log('CONDITIONS ARE EMPTY')
-        );
-    }
+		console.log('this is the item=>', items)
+		console.log('this is the value=>', value)
 };
 
 return   <View>
@@ -88,8 +75,8 @@ return   <View>
                         items={items}
                         placeholder="Choose a day"
                         setOpen={setOpen}
-                        setValue={setValue}
                         setItems={setItems}
+						setValue={setValue}
                         zIndex={1}
                         listMode="SCROLLVIEW"
                         dropDownDirection="BOTTOM"
@@ -104,13 +91,11 @@ return   <View>
                         }}
                         dropDownContainerStyle={{}}
                         containerStyle={{ height: '100%', width:'100%' }}
-                        // onChangeValue={() => {}}
                         onPress={(open) => console.log('was the picker open?', open)}
                     />
                 </View>
 				
-                {displayConditions(value)}
-				{/* <View>{!items.length ? null : <Conditions waves={items}/>}</View> */}
+				<View>{value == null ? null : <Conditions waves={value}/>}</View>
 				
             </View>
 }
@@ -122,7 +107,7 @@ const styles = StyleSheet.create({
 		marginTop: '15%',
 		marginBottom: '10%',
 		width: '60%',
-		// zIndex: 10,
+		zIndex: 10,
 	},
 	// selectDay: {
 	// 	position: 'absolute',
