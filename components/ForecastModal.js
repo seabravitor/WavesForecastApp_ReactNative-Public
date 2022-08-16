@@ -91,16 +91,22 @@ export default function ForecastModal() {
 
 	function compileHours(hours){
 		// console.log(hours)
-		var arr = []
+		var filteredData = []
 		hours.forEach(function (ele, i, arr) {
-			if (i % 72 === 0) {
+			if (i % 24 == 0) {
 				// GETTING THE DATA OF NEXT 07 DAYS HOURS 00:00
-				arr.push(ele)
-				setFinalData(arr)
-				return finalData
+				filteredData.push(ele)
+				return filteredData
 			}
 		});
+		showFinalData(filteredData)
 	};
+
+	function showFinalData (value) {
+		setFinalData(value)
+		console.log('this is finalData =>', finalData)
+		return finalData
+	}
 
     // START DISPLAYING
     return <View style={styles.search}>
@@ -150,7 +156,7 @@ export default function ForecastModal() {
 						Current Location
 					</Text>
 				</View>
-				
+				 
 				{!finalData.length ? null : <DateHour data={finalData}/>}
 
 			</View>

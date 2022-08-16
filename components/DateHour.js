@@ -73,13 +73,14 @@ return   <View>
                         open={open}
                         value={value}
                         items={items}
-                        placeholder="Choose a day"
                         setOpen={setOpen}
                         setItems={setItems}
 						setValue={setValue}
-                        zIndex={1}
+						placeholder="Choose a day"
+						closeAfterSelecting={true}
                         listMode="SCROLLVIEW"
                         dropDownDirection="BOTTOM"
+						zIndex={1}
                         listItemLabelStyle={{
                             color: 'black',
                         }}
