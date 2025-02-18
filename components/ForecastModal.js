@@ -8,7 +8,6 @@ import * as Location from 'expo-location';
 import axios from 'axios';
 import DateHour from './DateHour';
 import config from '../config'
-// navigator.geolocation = require('@react-native-community/geolocation');
 
 export default function ForecastModal() {
     	// API LOCATIONs

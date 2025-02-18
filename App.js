@@ -2,27 +2,43 @@ import React,{useState, useEffect}  from 'react';
 import { StyleSheet, Text, View, ImageBackground, Image, Modal, Pressable} from 'react-native';
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import ForecastModal from './components/ForecastModal';
+//import Geolocation from 'react-native-geolocation-service';
+
+// useEffect(() => {
+// 	if (hasLocationPermission) {
+// 		Geolocation.getCurrentPosition(
+// 			(position) => {
+// 			  console.log(position);
+// 			},
+// 			(error) => {
+// 			  // See error code charts below.
+// 			  console.log(error.code, error.message);
+// 			},
+// 			{ enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
+			
+// 		)}	
+// 	})
 
 
 export default function App() {
 
 const [modalVisible, setModalVisible] = useState(false); 
 
-useEffect(() => {
-	(async () => {
-		let {status} = await Location.requestForegroundPermissionsAsync();
-		if (status !== 'granted') {
-			setErrorMsg('Permission to access location was denied');
-			return;
-		}
-		console.log(process.env)
-		// let location = await Location.getCurrentPositionAsync({});
-		// setLat(location.coords.latitude);
-		// setLng(location.coords.longitude);
-		// console.log('your current latitude is:', lat);
-		// console.log('your current longitude is:', lng);
-	})();
-}, []);
+// useEffect(() => {
+// 	(async () => {
+// 		let {status} = await Location.requestForegroundPermissionsAsync();
+// 		if (status !== 'granted') {
+// 			setErrorMsg('Permission to access location was denied');
+// 			return;
+// 		}
+// 		console.log(process.env)
+// 		let location = await Location.getCurrentPositionAsync({});
+// 		setLat(location.coords.latitude);
+// 		setLng(location.coords.longitude);
+// 		console.log('your current latitude is:', lat);
+// 		console.log('your current longitude is:', lng);
+// 	})();
+// }, []);
 
 return <ImageBackground source={require('./assets/beachbackground.png')} style={styles.background}> 
 				
@@ -36,7 +52,7 @@ return <ImageBackground source={require('./assets/beachbackground.png')} style={
 				{/*SEARCH MODAL*/}
 				<View style={styles.openModal}>
 					<Pressable onPress={() => setModalVisible(true)}>
-						{/* <Text style={styles.textStyle}>Show Modal</Text> */}
+						<Text style={styles.textStyle}>Show Modal</Text>
 						<Image style={styles.earth} source={require('./assets/earth.png')}/>
 					</Pressable>
 					
