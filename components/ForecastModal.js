@@ -1,16 +1,16 @@
 import React, { useState} from 'react';
 import { StyleSheet, Text, View} from 'react-native';
-import DropDownPicker from 'react-native-dropdown-picker';
+// import DropDownPicker from 'react-native-dropdown-picker';
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import Conditions from './Conditions';
+// import Conditions from './Conditions';
 import * as Location from 'expo-location';
 import axios from 'axios';
 import DateHour from './DateHour';
 import config from '../config'
 
 export default function ForecastModal() {
-    	// API LOCATIONs
+    // API LOCATIONs
 	// Get current location based on locations device
 	const [location, setLocation] = useState();
 	const [errorMsg, setErrorMsg] = useState(null);
@@ -35,7 +35,7 @@ export default function ForecastModal() {
 	// const [items, setItems] = useState([]);
     // const [value, setValue] = useState(undefined);
     const [finalData, setFinalData] = useState([])
-
+	
 	const params =
 		'waveHeight,waveDirection,windSpeed,windDirection20m,waterTemperature,airTemperature,precipitation,cloudCover';
 	const source = 'sg';
@@ -52,6 +52,7 @@ export default function ForecastModal() {
 		console.log('AXIOS FUNCTION CALLED');
 		console.log('your latitude is:', lat);
 		console.log('your longitude is:', lng);
+		console.log('your location is:', location);
 		await axios(options)
 			.then((response) => {
 				console.log('AXIOS WORKING RESPONSE.DATA.HOURS');
@@ -110,11 +111,10 @@ export default function ForecastModal() {
     // START DISPLAYING
     return <View style={styles.search}>
 					<GooglePlacesAutocomplete
-						placeholder='Edit Location'
+						placeholder='Go search'
 						fetchDetails={true}
-						// currentLocation={true}
-						// currentLocationLabel='Current location'
 						onPress={(data, details = null) => {
+							console.log('this is working');
 							setLat(details.geometry.location.lat);
 							setLng(details.geometry.location.lng);
 							handleSubmit();
@@ -122,40 +122,13 @@ export default function ForecastModal() {
 						query={{
 							key: `${config.REACT_APP_AUTOCOMPLETE}`,
 							language: 'en',
-							types: 'geocode',
+							// types: 'geocode',
 						}}
+						// currentLocation={true}
+						// currentLocationLabel='Current location'
 						nearbyPlacesAPI="GoogleReverseGeocoding"
 						GooglePlacesDetailsQuery={{ fields: 'geometry' }}
-						styles={
-							({
-								textInputContainer:{
-								borderRadius: 6,
-								borderWidth: 1,
-								borderColor: 'rgb(192, 192, 192)',
-								width: '100%',
-								marginTop: '5%',
-								},
-								listView:{
-									flex: 1,
-									borderRadius: 1,
-									borderWidth: 1,
-									borderColor: 'rgb(192, 192, 192)',
-									backgroundColor: '#FFF',
-								},
-							})
-						}
 					/>
-				<View style={styles.grid}>
-					<Text>📍</Text>
-					<Text
-						style={styles.currentLocation} 
-						onPress={()=>{
-							handleSubmit();
-						}}>
-						Current Location
-					</Text>
-				</View>
-				 
 				{!finalData.length ? null : <DateHour data={finalData}/>}
 
 			</View>
@@ -165,7 +138,10 @@ const styles = StyleSheet.create({
     search: {
 		position: 'absolute',
 		marginTop: '15%',
-		width: '90%'
+		width: '100%',
+		borderRadius: 6,
+		borderWidth: 1,
+		borderColor: 'rgb(192, 192, 192)',
 	},
 	grid: {
 		position: 'absolute',

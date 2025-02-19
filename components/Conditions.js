@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
 		position: 'absolute',
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		marginTop: '45%',
+		marginTop: '30%',
 	},
 	conditions: {
 		marginRight: '2%',

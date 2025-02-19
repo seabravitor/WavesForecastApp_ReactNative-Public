@@ -45,14 +45,13 @@ return <ImageBackground source={require('./assets/beachbackground.png')} style={
 				{/* HEADER */}
 				<View style={styles.header}>
 				{/* <Image style={styles.shaka} source={require('./assets/shaka.png')}/> */}
-				<Text style={styles.title}> Trezenzioitenta380</Text>
-				<Text style={styles.subtitle}>Forecast dos guri</Text>
+				<Text style={styles.title}>Find your waves</Text>
+				<Text style={styles.subtitle}>Go Ripple!</Text>
 				</View>
 
 				{/*SEARCH MODAL*/}
 				<View style={styles.openModal}>
 					<Pressable onPress={() => setModalVisible(true)}>
-						<Text style={styles.textStyle}>Show Modal</Text>
 						<Image style={styles.earth} source={require('./assets/earth.png')}/>
 					</Pressable>
 					
@@ -68,12 +67,11 @@ return <ImageBackground source={require('./assets/beachbackground.png')} style={
 						<View style={styles.hideModal}>
 							<View style={styles.modalView}>
 								<Pressable
-								style={[styles.button, styles.buttonClose]}
+								style={[styles.buttonClose]}
 								onPress={() => setModalVisible(!modalVisible)}
 								>
 								{/* <Text style={styles.textStyle}>Hide Modal</Text> */}
-								{/* <Image style={styles.error} source={require('./assets/error.png')}/> */}
-								<Image style={styles.error} source={require('./assets/shaka.png')}/>
+								<Image style={styles.error} source={require('./assets/error.png')}/>
 								</Pressable>
 
 								<ForecastModal />
@@ -86,8 +84,8 @@ return <ImageBackground source={require('./assets/beachbackground.png')} style={
 
 				{/* ICONE ROMULO */}
 				<View style={styles.avatar}>
-				{/* <Image source={require('./assets/iconpixel.png')} style={styles.icon}/> */}
-				<Text style={styles.textavatar}>#descansinho</Text>
+				<Image style={styles.icon} source={require('./assets/shaka.png')}/>
+				<Text style={styles.textavatar}>#descansinho #forecastdosguri</Text>
 				</View>
 			</ImageBackground> 
 	}
@@ -125,11 +123,16 @@ const styles = StyleSheet.create({
 	// -----
 	openModal: {
 		position: 'absolute',
-		marginBottom: '100%',
-		paddingBottom: '40%',
+		paddingBottom: '50%',
+		paddingTop: '80%',
 		marginHorizontal: '40%',
 		zIndex: 1,
 	  },
+	  earth : {
+		maxWidth: '120%',
+		maxHeight: '30%',
+		alignSelf:'center',
+	},
 	  hideModal: {
 		flex: 1,
 		justifyContent: "center",
@@ -155,23 +158,20 @@ const styles = StyleSheet.create({
 		shadowRadius: 4,
 		elevation: 5
 	  },
-	button: {
-		borderRadius: 20,
-		padding: 10,
-		elevation: 2
-	  },
-	buttonOpen: {
-		// backgroundColor: "#F194FF",
-	  },
-	earth : {
-		width: '150%',
-		height: '100%',
-	},
+	// button: {
+	// 	borderRadius: 20,
+	// 	padding: 10,
+	// 	elevation: 2
+	//   },
+	// buttonOpen: {
+	// 	backgroundColor: "#F194FF",
+	//   },
 	error : {
-		display: 'flex',
+		// display: 'flex',
+		marginRight: '20%',
 		alignSelf: 'flex-end',
-		width: '100%',
-		height: '80%',
+		width: '50%',
+		height: '70%',
 		resizeMode: 'contain'
 	},
 	buttonClose: {
@@ -184,17 +184,12 @@ const styles = StyleSheet.create({
 		height: '15%',
 		// resizeMode: 'contain',
 	  },
-	textStyle: {
-		color: "white",
-		fontWeight: "bold",
-		textAlign: "center"
-	  },
 	modalText: {
 		marginBottom: 15,
 		textAlign: "center"
 	  },
 
-	// ICON ROMULO // 
+	// FOOTER // 
 	textavatar: {
 		color: 'rgb(160, 151, 99)',
 		fontSize: RFPercentage(2),
@@ -205,7 +200,7 @@ const styles = StyleSheet.create({
 		marginLeft: '5%'
 	},
 	icon: {
-		width:'20%',
+		width:'15%',
 		height: '50%',
 	},
 });

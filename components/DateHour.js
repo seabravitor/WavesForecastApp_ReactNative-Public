@@ -105,10 +105,9 @@ const styles = StyleSheet.create({
 	dropdown: {
 		position: 'absolute',
 		alignSelf: 'center',
-		marginTop: '15%',
+		marginTop: '5%',
 		marginBottom: '10%',
 		width: '60%',
-		zIndex: 10,
 	},
 	// selectDay: {
 	// 	position: 'absolute',
