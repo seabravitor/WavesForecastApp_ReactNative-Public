@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View} from 'react-native';
 // import DropDownPicker from 'react-native-dropdown-picker';
 import { RFPercentage } from 'react-native-responsive-fontsize';
@@ -108,6 +108,12 @@ export default function ForecastModal() {
 		return finalData
 	}
 
+    useEffect(() => {
+        if (lat !== null && lng !== null) {
+            handleSubmit();
+        }
+    }, [lat, lng]); // Runs handleSubmit when lat or lng change
+
     // START DISPLAYING
     return <View style={styles.search}>
 					<GooglePlacesAutocomplete
@@ -117,7 +123,7 @@ export default function ForecastModal() {
 							console.log('this is working');
 							setLat(details.geometry.location.lat);
 							setLng(details.geometry.location.lng);
-							handleSubmit();
+							// handleSubmit();
 						}}
 						query={{
 							key: `${config.REACT_APP_AUTOCOMPLETE}`,

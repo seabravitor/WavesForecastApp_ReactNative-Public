@@ -14,57 +14,22 @@ export default function DateHour(props) {
 	const [value, setValue] = useState(null);
 	const [items, setItems] = useState([]);
 
-
 	useEffect(() => {
-			defineItems(props);
-	}, []);
+		defineItems(props);
+		console.log('Updated items:', items);
+		console.log('Selected value:', value);
+	}, [props.data]); // Re-run whenever props.data changes
 
-    let defineItems = (data) => {
-		console.log('DATEHOUR CALLED')
-		setItems([
-			{
-				id: 1,
-				label: `${props.data[0].time.slice(0, 10)}`,
-				value: props.data[0],
-			},
-			{
-				id: 2,
-				label: `${props.data[1].time.slice(0, 10)}`,
-				value: props.data[1],
-			},
-			{
-				id: 3,
-				label: `${props.data[2].time.slice(0, 10)}`,
-				value: props.data[2],
-			},
-			{
-				id: 4,
-				label: `${props.data[3].time.slice(0, 10)}`,
-				value: props.data[3],
-			},
-			{
-				id: 5,
-				label: `${props.data[4].time.slice(0, 10)}`,
-				value: props.data[4],
-			},
-			{
-				id: 6,
-				label: `${props.data[5].time.slice(0, 10)}`,
-				value: props.data[5],
-			},
-			{
-				id: 7,
-				label: `${props.data[6].time.slice(0, 10)}`,
-				value: props.data[6],
-			},
-			{
-				id: 8,
-				label: `${props.data[7].time.slice(0, 10)}`,
-				value: props.data[7],
-			},
-		]);
-		console.log('this is the item=>', items)
-		console.log('this is the value=>', value)
+let defineItems = (data) => {
+    console.log('DATEHOUR CALLED');
+    setItems(
+        data.data.map((item, index) => ({
+            id: index + 1, // Ensure ID is unique
+            key: `date_${index}`, // Explicitly add a unique key
+            label: item.time.slice(0, 10),
+            value: item,
+        }))
+    );
 };
 
 return   <View>
