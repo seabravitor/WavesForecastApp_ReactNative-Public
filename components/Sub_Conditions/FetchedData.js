@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { RFPercentage } from 'react-native-responsive-fontsize';
 
 export default function FetchedData(props) {
 	// Function to convert degrees into cardinal directions
@@ -17,52 +16,71 @@ export default function FetchedData(props) {
 	};
 
 	return (
-		<View style={styles.grid} >
-			<View style={styles.conditionsicons}>
-				<Text>🌡</Text>
-				<Text></Text>
-				<Text>💧</Text>
-				<Text></Text>
-				<Text>⛅️</Text>
-				<Text></Text>
-				<Text>💧</Text>
-				<Text></Text>
-				<Text>🌊</Text>
-				<Text></Text>
-				<Text>🌊</Text>
-				<Text></Text>
-				<Text>💨</Text>
-				<Text></Text>
-				<Text>💨</Text>
+		<View style={styles.container}>
+
+			<View style={styles.labelsColumn}>
+				<Text style={styles.rowText}>Temp:</Text>
+				<Text style={styles.rowText}>Pressure:</Text>
+				<Text style={styles.rowText}>Clouds:</Text>
+				<Text style={styles.rowText}>Water Temp:</Text>
+				<Text style={styles.rowText}>Wave Height:</Text>
+				<Text style={styles.rowText}>Wave Dir:</Text>
+				<Text style={styles.rowText}>Wind Speed:</Text>
+				<Text style={styles.rowText}>Wind Dir:</Text>
 			</View>
-			<View>
-				<Text>{props.individualData.airTemperature.sg}ºC</Text>
-				<Text></Text>
-				<Text>{props.individualData.precipitation.sg}hPa</Text>
-				<Text></Text>
-				<Text>{props.individualData.cloudCover.sg} % Cloud</Text>
-				<Text></Text>
-				<Text>{props.individualData.waterTemperature.sg}ºC</Text>
-				<Text></Text>
-				<Text>{props.individualData.waveHeight.sg} Meters</Text>
-				<Text></Text>
-				<Text>{getDirection(props.individualData.waveDirection.sg)}</Text>
-				<Text></Text>
-				<Text>{props.individualData.windSpeed.sg} km/h</Text>
-				<Text></Text>
-				<Text>{getDirection(props.individualData.windDirection20m.sg)}</Text>
+			<View style={styles.iconsColumn}>
+				<Text style={styles.rowText}>🌡</Text>
+				<Text style={styles.rowText}>💧</Text>
+				<Text style={styles.rowText}>⛅️</Text>
+				<Text style={styles.rowText}>💧</Text>
+				<Text style={styles.rowText}>🌊</Text>
+				<Text style={styles.rowText}>🌊</Text>
+				<Text style={styles.rowText}>💨</Text>
+				<Text style={styles.rowText}>💨</Text>
+			</View>
+
+			<View style={styles.dataColumn}>
+				<Text style={styles.rowText}>{props.individualData.airTemperature.sg}ºC</Text>
+				<Text style={styles.rowText}>{props.individualData.precipitation.sg}hPa</Text>
+				<Text style={styles.rowText}>{props.individualData.cloudCover.sg}%</Text>
+				<Text style={styles.rowText}>{props.individualData.waterTemperature.sg}ºC</Text>
+				<Text style={styles.rowText}>{props.individualData.waveHeight.sg}m</Text>
+				<Text style={styles.rowText}>{getDirection(props.individualData.waveDirection.sg)}</Text>
+				<Text style={styles.rowText}>{props.individualData.windSpeed.sg} km/h</Text>
+				<Text style={styles.rowText}>{getDirection(props.individualData.windDirection20m.sg)}</Text>
 			</View>
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
-	grid: {
-		position: 'absolute',
+	container: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
+		alignItems: 'center',
+		width: '100%',
+		backgroundColor: '#f5f5f5',
+		padding: 10,
+		borderRadius: 8,
+		shadowColor: '#000',
+		shadowOffset: { width: 0, height: 2 },
+		shadowOpacity: 0.1,
+		shadowRadius: 4,
+		elevation: 3,
 	},
-	conditionsicons: {
-		paddingHorizontal: '15%'
-	}
+	iconsColumn: {
+		flex: 1,
+		alignItems: 'center',
+	},
+	labelsColumn: {
+		flex: 2,
+		alignItems: 'flex-start',
+	},
+	dataColumn: {
+		flex: 2,
+		alignItems: 'flex-start',
+	},
+	rowText: {
+		marginBottom: 8, // Adds space between each row
+	},
 });

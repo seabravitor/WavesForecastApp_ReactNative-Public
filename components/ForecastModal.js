@@ -35,6 +35,8 @@ export default function ForecastModal() {
 	// const [items, setItems] = useState([]);
     // const [value, setValue] = useState(undefined);
     const [finalData, setFinalData] = useState([])
+	// const [isDataReady, setIsDataReady] = useState(false); // New state to track when data is available
+
 	
 	const params =
 		'waveHeight,waveDirection,windSpeed,windDirection20m,waterTemperature,airTemperature,precipitation,cloudCover';
@@ -102,10 +104,10 @@ export default function ForecastModal() {
 		showFinalData(filteredData)
 	};
 
-	function showFinalData (value) {
-		setFinalData(value)
-		console.log('this is finalData =>', finalData)
-		return finalData
+	function showFinalData(value) {
+		setFinalData(value);
+		setIsDataReady(true); // Update state when data is ready
+		console.log('this is finalData =>', value);
 	}
 
     useEffect(() => {
@@ -136,8 +138,12 @@ export default function ForecastModal() {
 						GooglePlacesDetailsQuery={{ fields: 'geometry' }}
 					/>
 				{!finalData.length ? null : <DateHour data={finalData}/>}
-
 			</View>
+        // {isDataReady && (
+        //     <View style={styles.dateHourContainer}>
+        //         <DateHour data={finalData} />
+        //     </View>
+        // )}
     }
 
 const styles = StyleSheet.create({
@@ -160,5 +166,9 @@ const styles = StyleSheet.create({
 		fontSize: RFPercentage(2),
 		color: 'black',
 		textDecorationLine: 'underline',
+	},
+	dateHourContainer: {
+			marginTop: 20, // Adjust spacing from search bar
+			alignSelf: 'center',
 	},
 })

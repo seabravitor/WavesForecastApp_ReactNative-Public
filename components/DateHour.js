@@ -1,38 +1,52 @@
-import React, {useState, useEffect} from 'react';
-import { StyleSheet, Text, View} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import Conditions from './Conditions';
 
 export default function DateHour(props) {
- 
- 	// DROPDOWN
-	// open dropdown menu
-	// set real value to dropdown optios
-	// set options to dropdown
-	const [open, setOpen] = useState(false);
-	const [value, setValue] = useState(null);
-	const [items, setItems] = useState([]);
+    const [open, setOpen] = useState(false);
+    const [value, setValue] = useState(null);
+    const [items, setItems] = useState([]);
 
-	useEffect(() => {
-		defineItems(props);
-		console.log('Updated items:', items);
-		console.log('Selected value:', value);
-	}, [props.data]); // Re-run whenever props.data changes
+    useEffect(() => {
+        defineItems(props);
+    }, [props.data]); // Re-run whenever props.data changes
 
-let defineItems = (data) => {
-    console.log('DATEHOUR CALLED');
-    setItems(
-        data.data.map((item, index) => ({
-            id: index + 1, // Ensure ID is unique
-            key: `date_${index}`, // Explicitly add a unique key
-            label: item.time.slice(0, 10),
-            value: item,
-        }))
-    );
-};
+    const defineItems = (data) => {
+        setItems(
+            data.data.map((item, index) => ({
+                id: index + 1,
+                key: `date_${index}`,
+                label: item.time.slice(0, 10),
+                value: item,
+            }))
+        );
+    };
 
-return   <View>
+    const handleNextDay = () => {
+        if (!value) return;
+        const currentIndex = items.findIndex((item) => item.value === value);
+        if (currentIndex < items.length - 1) {
+            setValue(items[currentIndex + 1].value);
+        }
+    };
+
+    const handlePrevDay = () => {
+        if (!value) return;
+        const currentIndex = items.findIndex((item) => item.value === value);
+        if (currentIndex > 0) {
+            setValue(items[currentIndex - 1].value);
+        }
+    };
+
+    return (
+        <View style={styles.container}>
+            <View style={styles.navigation}>
+                <TouchableOpacity onPress={handlePrevDay} style={styles.arrowButton}>
+                    <Text style={styles.arrowText}>⬅️</Text>
+                </TouchableOpacity>
+
                 <View style={styles.dropdown}>
                     <DropDownPicker
                         open={open}
@@ -40,47 +54,56 @@ return   <View>
                         items={items}
                         setOpen={setOpen}
                         setItems={setItems}
-						setValue={setValue}
-						placeholder="Choose a day"
-						closeAfterSelecting={true}
+                        setValue={setValue}
+                        placeholder="Choose a day"
+                        closeAfterSelecting={true}
                         listMode="SCROLLVIEW"
                         dropDownDirection="BOTTOM"
-						zIndex={1}
-                        listItemLabelStyle={{
-                            color: 'black',
-                        }}
-                        text={{
-                            alignSelf: 'center'
-                        }}
-                        textStyle={{
-                            color: 'black',
-                        }}
-                        dropDownContainerStyle={{}}
-                        containerStyle={{ height: '100%', width:'100%' }}
-                        onPress={(open) => console.log('was the picker open?', open)}
+                        zIndex={1}
+                        dropDownContainerStyle={{ borderWidth: 0 }} // No border
+                        style={styles.pickerStyle} // Custom styling
+                        textStyle={styles.selectedText} // Highlight selected date
+                        containerStyle={{ width: '100%' }}
                     />
                 </View>
-				
-				<View>{value == null ? null : <Conditions waves={value}/>}</View>
-				
+
+                <TouchableOpacity onPress={handleNextDay} style={styles.arrowButton}>
+                    <Text style={styles.arrowText}>➡️</Text>
+                </TouchableOpacity>
             </View>
+
+            {value && <Conditions waves={value} />}
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
-	dropdown: {
-		position: 'absolute',
-		alignSelf: 'center',
-		marginTop: '5%',
-		marginBottom: '10%',
-		width: '60%',
-	},
-	// selectDay: {
-	// 	position: 'absolute',
-	// 	alignSelf: 'flex-end',
-	// 	fontWeight: 'bold',
-	// 	marginTop: '12%',
-	// 	paddingRight: '5%',
-	// 	marginBottom: '5%',
-	// }
-})
-   
+    container: {
+        alignItems: 'center',
+        marginTop: '5%',
+    },
+    navigation: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    dropdown: {
+        width: '60%',
+    },
+    pickerStyle: {
+        borderWidth: 0, // No border
+        backgroundColor: 'transparent', // Background color
+    },
+    selectedText: {
+        fontSize: RFPercentage(2.2),
+        color: 'black',
+        textAlign: 'center',
+    },
+    arrowButton: {
+        paddingHorizontal: 15,
+    },
+    arrowText: {
+        fontSize: RFPercentage(3),
+    },
+});
+
