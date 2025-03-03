@@ -79,8 +79,8 @@ export default function DateHour(props) {
 
 const styles = StyleSheet.create({
     container: {
-        alignItems: 'center',
-        marginTop: '5%',
+		alignItems: 'center',
+        marginTop: 10,
     },
     navigation: {
         flexDirection: 'row',

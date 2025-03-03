@@ -116,16 +116,18 @@ export default function ForecastModal() {
         }
     }, [lat, lng]); // Runs handleSubmit when lat or lng change
 
+
     // START DISPLAYING
-    return <View style={styles.search}>
+    return <View>
+				<View style={styles.search}>
 					<GooglePlacesAutocomplete
+						style={styles.dropdown}
 						placeholder='Go search'
 						fetchDetails={true}
 						onPress={(data, details = null) => {
 							console.log('this is working');
 							setLat(details.geometry.location.lat);
 							setLng(details.geometry.location.lng);
-							// handleSubmit();
 						}}
 						query={{
 							key: `${config.REACT_APP_AUTOCOMPLETE}`,
@@ -137,38 +139,33 @@ export default function ForecastModal() {
 						nearbyPlacesAPI="GoogleReverseGeocoding"
 						GooglePlacesDetailsQuery={{ fields: 'geometry' }}
 					/>
-				{!finalData.length ? null : <DateHour data={finalData}/>}
+				</View>
+				<View>
+				{/* {!finalData.length ? null : <DateHour data={finalData}/>} */}
+				<DateHour data={finalData}/>
+				</View>
 			</View>
-        // {isDataReady && (
-        //     <View style={styles.dateHourContainer}>
-        //         <DateHour data={finalData} />
-        //     </View>
-        // )}
     }
 
-const styles = StyleSheet.create({
-    search: {
-		position: 'absolute',
-		marginTop: '15%',
-		width: '100%',
-		borderRadius: 6,
-		borderWidth: 1,
-		borderColor: 'rgb(192, 192, 192)',
-	},
-	grid: {
-		position: 'absolute',
-		flexDirection: 'row',
-		justifyContent: 'flex-start',
-		marginTop: '30%',
-		alignSelf: 'flex-end',
-	},
-	currentLocation: {
-		fontSize: RFPercentage(2),
-		color: 'black',
-		textDecorationLine: 'underline',
-	},
-	dateHourContainer: {
-			marginTop: 20, // Adjust spacing from search bar
-			alignSelf: 'center',
-	},
-})
+	const styles = StyleSheet.create({
+		search: {
+			width: '100%',
+			marginTop: 30,  // Provides better spacing from top
+			paddingHorizontal: 10,
+			borderRadius: 6,
+			borderWidth: 0.5,
+			borderColor: 'rgb(192, 192, 192)',
+			backgroundColor: '#fff',
+			flexDirection: 'row',  // Ensures dropdown aligns properly
+			// alignItems: 'center',  // Centers content vertically
+		},
+		dropdown: {
+			borderColor: 'rgb(192, 192, 192)',
+		},
+		currentLocation: {
+			fontSize: RFPercentage(2),
+			color: 'black',
+			textDecorationLine: 'underline',
+		},
+	});
+	
