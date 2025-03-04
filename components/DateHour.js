@@ -55,15 +55,11 @@ export default function DateHour(props) {
                         setOpen={setOpen}
                         setItems={setItems}
                         setValue={setValue}
-                        placeholder="Choose a day"
+                        placeholder="Select a day here!"
                         closeAfterSelecting={true}
                         listMode="SCROLLVIEW"
                         dropDownDirection="BOTTOM"
                         zIndex={1}
-                        dropDownContainerStyle={{ borderWidth: 0 }} // No border
-                        style={styles.pickerStyle} // Custom styling
-                        textStyle={styles.selectedText} // Highlight selected date
-                        containerStyle={{ width: '100%' }}
                     />
                 </View>
 
@@ -89,10 +85,7 @@ const styles = StyleSheet.create({
     },
     dropdown: {
         width: '60%',
-    },
-    pickerStyle: {
-        borderWidth: 0, // No border
-        backgroundColor: 'transparent', // Background color
+		borderColor: 'rgb(192, 192, 192)',
     },
     selectedText: {
         fontSize: RFPercentage(2.2),

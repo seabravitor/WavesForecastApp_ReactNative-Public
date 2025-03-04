@@ -81,6 +81,6 @@ const styles = StyleSheet.create({
 		alignItems: 'flex-start',
 	},
 	rowText: {
-		marginBottom: 8, // Adds space between each row
+		marginBottom: 18, // Adds space between each row
 	},
 });

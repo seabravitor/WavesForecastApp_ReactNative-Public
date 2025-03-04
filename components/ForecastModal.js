@@ -141,8 +141,7 @@ export default function ForecastModal() {
 					/>
 				</View>
 				<View>
-				{/* {!finalData.length ? null : <DateHour data={finalData}/>} */}
-				<DateHour data={finalData}/>
+				{!finalData.length ? null : <DateHour data={finalData}/>}
 				</View>
 			</View>
     }
@@ -153,7 +152,7 @@ export default function ForecastModal() {
 			marginTop: 30,  // Provides better spacing from top
 			paddingHorizontal: 10,
 			borderRadius: 6,
-			borderWidth: 0.5,
+			borderWidth: 1,
 			borderColor: 'rgb(192, 192, 192)',
 			backgroundColor: '#fff',
 			flexDirection: 'row',  // Ensures dropdown aligns properly
