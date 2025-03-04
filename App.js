@@ -71,7 +71,7 @@ return <ImageBackground source={require('./assets/beachbackground.png')} style={
 								onPress={() => setModalVisible(!modalVisible)}
 								>
 								{/* <Text style={styles.textStyle}>Hide Modal</Text> */}
-								<Image style={styles.error} source={require('./assets/error.png')}/>
+								<Image style={styles.error} source={require('./assets/error2.png')}/>
 								</Pressable>
 
 								<ForecastModal />

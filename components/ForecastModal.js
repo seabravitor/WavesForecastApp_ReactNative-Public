@@ -153,7 +153,6 @@ export default function ForecastModal() {
 			paddingHorizontal: 10,
 			borderRadius: 6,
 			borderWidth: 1,
-			borderColor: 'rgb(192, 192, 192)',
 			backgroundColor: '#fff',
 			flexDirection: 'row',  // Ensures dropdown aligns properly
 			// alignItems: 'center',  // Centers content vertically
