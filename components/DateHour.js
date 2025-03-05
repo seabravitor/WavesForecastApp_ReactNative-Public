@@ -141,21 +141,6 @@ const styles = StyleSheet.create({
         width: '35%', // Ensure both dropdowns fit properly
         borderColor: 'rgb(192, 192, 192)',
     },
-    // navigation: {
-    //     flexDirection: 'row',
-    //     alignItems: 'flex-start',       
-    //     width: '90%', // Ensures arrows & Conditions align properly
-    // },
-    // arrowText: {
-    //     fontSize: RFPercentage(3),
-    // },
-    // arrowButton: {
-    //     zIndex: 1,
-    // },
-    // conditionsWrapper: {
-    //     flex: 1,
-    //     alignItems: 'center', // Center Conditions
-    // },
     navigation: {
         flexDirection: 'row',
         alignItems: 'flex-end',

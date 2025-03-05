@@ -111,7 +111,6 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
 	surfTextContainer: {
-        // position: 'absolute',
         alignSelf: 'center',
         backgroundColor: 'rgba(255, 255, 255, 0.8)', // Semi-transparent background
         paddingVertical: 10,
