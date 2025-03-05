@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { RFPercentage } from 'react-native-responsive-fontsize';
 
 export default function FetchedData(props) {
 	// Function to convert degrees into cardinal directions
@@ -66,6 +67,7 @@ const styles = StyleSheet.create({
 		shadowOpacity: 0.1,
 		shadowRadius: 4,
 		elevation: 3,
+		backgroundColor: '#f5f5f5',
 	},
 	iconsColumn: {
 		flex: 1,
@@ -81,5 +83,6 @@ const styles = StyleSheet.create({
 	},
 	rowText: {
 		marginBottom: 18, // Adds space between each row
+		fontSize: RFPercentage(2),
 	},
 });

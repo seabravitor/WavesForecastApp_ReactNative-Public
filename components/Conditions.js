@@ -17,6 +17,6 @@ export default function Conditions(props) {
 const styles = StyleSheet.create({
 	container: {
 		width: '120%',
-		paddingBottom: 5,
+		paddingBottom: 2,
 	},
 });

@@ -161,7 +161,6 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
         justifyContent: 'center', // Centers all elements in the row
         width: '100%',
-        backgroundColor: '#f5f5f5',
         borderRadius: 6,
     },
     arrowButton: {
