@@ -76,7 +76,7 @@ export default function DateHour({ data }) {
                         setOpen={setOpenDay}
                         setValue={setSelectedDay}
                         setItems={setDays}
-                        placeholder="Select a day"
+                        placeholder="Select a Day"
                         closeAfterSelecting={true}
                         listMode="SCROLLVIEW"
                         dropDownDirection="BOTTOM"
@@ -92,7 +92,7 @@ export default function DateHour({ data }) {
                         setOpen={setOpenHour}
                         setValue={setSelectedHour}
                         setItems={setHours}
-                        placeholder="Select an hour"
+                        placeholder="Hour"
                         closeAfterSelecting={true}
                         listMode="SCROLLVIEW"
                         dropDownDirection="BOTTOM"

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { StyleSheet, Text, View, ImageBackground, Animated, Modal, Pressable, Image } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Animated, Modal, Pressable, Image} from 'react-native';
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import ForecastModal from './components/ForecastModal';
 import InfoModal from './components/InfoModal';
@@ -67,7 +67,8 @@ export default function App() {
             {/* INFO MODAL */}
             <View style={styles.avatar}>
                 <Pressable onPress={() => setInfoModalVisible(true)}>
-                    <Image style={styles.icon} source={require('./assets/info.png')} />
+                    <Image style={styles.icon} source={require('./assets/info2.png')} />
+					{/* <Image style={styles.icon} source={require('./assets/info.png')} /> */}
                 </Pressable>
             </View>
 
@@ -165,7 +166,7 @@ const styles = StyleSheet.create({
         right: 20,
     },
     icon: {
-        width: 35,
-        height: 35,
+        width: 30,
+        height: 30,
     },
 });
