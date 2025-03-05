@@ -50,21 +50,6 @@ export default function ForecastModal() {
 		},
 	};
 
-	let handleSubmit = async () => {
-		console.log('AXIOS FUNCTION CALLED');
-		console.log('your latitude is:', lat);
-		console.log('your longitude is:', lng);
-		console.log('your location is:', location);
-		await axios(options)
-			.then((response) => {
-				console.log('AXIOS WORKING RESPONSE.DATA.HOURS');
-				compileHours(response.data.hours);
-			})
-			.catch((error) => {
-				console.log('Error retrieving customer data!', error);
-			});
-	};
-
 	// IMPROVEMENTS: COMPILING DATA FOR EVERY 3 HOURS & METHOD FOR COORDINATES FAR FROM ANY COAST
 
 	// let compileHours = () => {
@@ -91,31 +76,45 @@ export default function ForecastModal() {
 	// 		precipitation: response.data.hours[0].precipitation.sg,
 	// 		cloudCover: response.data.hours[0].cloudCover.sg,
 
-	function compileHours(hours){
-		// console.log(hours)
-		var filteredData = []
-		hours.forEach(function (ele, i, arr) {
-			if (i % 24 == 0) {
-				// GETTING THE DATA OF NEXT 07 DAYS HOURS 00:00
-				filteredData.push(ele)
-				return filteredData
-			}
-		});
-		showFinalData(filteredData)
-	};
-
-	function showFinalData(value) {
-		setFinalData(value);
-		setIsDataReady(true); // Update state when data is ready
-		console.log('this is finalData =>', value);
-	}
-
-    useEffect(() => {
+useEffect(() => {
         if (lat !== null && lng !== null) {
             handleSubmit();
         }
-    }, [lat, lng]); // Runs handleSubmit when lat or lng change
+}, [lat, lng]); // Runs handleSubmit when lat or lng change
 
+
+let handleSubmit = async () => {
+    console.log('Fetching weather data...');
+    console.log('Latitude:', lat);
+    console.log('Longitude:', lng);
+    console.log('Location:', location);
+    
+    try {
+        const response = await axios(options);
+        console.log('API Response received');
+        compileHours(response.data.hours);
+    } catch (error) {
+        console.log('Error fetching data:', error);
+    }
+};
+
+function compileHours(hours) {
+    let filteredData = [];
+    hours.forEach((ele, i) => {
+        if (i % 3 === 0) {  // Filter data every 3 hours
+            filteredData.push(ele);
+        }
+    });
+    showFinalData(filteredData);
+}
+
+function showFinalData(value) {
+    setFinalData(value);
+    console.log('Final Data:', value);
+}
+
+
+//--
 
     // START DISPLAYING
     return <View>
