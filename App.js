@@ -34,9 +34,12 @@ export default function App() {
 
     return (
         <ImageBackground source={require('./assets/beachbackground.png')} style={styles.background}>
-            
+
             {/* SEARCH MODAL */}
-            <View style={styles.openModal}>
+			<View style={styles.openModal}>
+				<View style={styles.surfTextContainer}>
+        			<Text style={styles.surfText}>GoSurf</Text>
+    			</View>
                 <Pressable onPress={() => setForecastModalVisible(true)}>
                     <Animated.Image
                         style={[styles.earth, { transform: [{ scale: scaleAnim }] }]}
@@ -64,7 +67,7 @@ export default function App() {
             {/* INFO MODAL */}
             <View style={styles.avatar}>
                 <Pressable onPress={() => setInfoModalVisible(true)}>
-                    <Image style={styles.icon} source={require('./assets/shaka.png')} />
+                    <Image style={styles.icon} source={require('./assets/info.png')} />
                 </Pressable>
             </View>
 
@@ -107,6 +110,21 @@ const styles = StyleSheet.create({
         maxHeight: '30%',
         alignSelf: 'center',
     },
+	surfTextContainer: {
+        // position: 'absolute',
+        alignSelf: 'center',
+        backgroundColor: 'rgba(255, 255, 255, 0.8)', // Semi-transparent background
+        paddingVertical: 10,
+		paddingHorizontal: 10,
+        borderRadius: 20, // Rounded effect
+        elevation: 3, // Adds a shadow for depth
+    },
+    surfText: {
+        fontSize: RFPercentage(2.5),
+        fontWeight: 'bold',
+        color: 'black',
+        textAlign: 'center',
+    },
     hideModal: {
         flex: 1,
         justifyContent: 'center',
@@ -147,7 +165,7 @@ const styles = StyleSheet.create({
         right: 20,
     },
     icon: {
-        width: 50,
-        height: 50,
+        width: 40,
+        height: 40,
     },
 });

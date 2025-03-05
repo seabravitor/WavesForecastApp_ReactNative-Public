@@ -1,6 +1,5 @@
 import React from 'react';
-import { Modal, View, Text, Pressable, StyleSheet } from 'react-native';
-import { RFPercentage } from 'react-native-responsive-fontsize';
+import { Modal, View, Text, Pressable, StyleSheet, Image } from 'react-native';
 
 export default function InfoModal({ visible, onClose }) {
 
@@ -8,6 +7,7 @@ export default function InfoModal({ visible, onClose }) {
         <View>
             <View style={styles.overlay}>
                 <Text style={styles.title}>Ripple Forecast Info</Text>
+                <Image style={styles.icon} source={require('../assets/shaka.png')} />
                 <Text style={styles.info}>
                     <Text style={styles.label}>Version: </Text>1.0.0
                 </Text>
@@ -53,5 +53,11 @@ const styles = StyleSheet.create({
     hashtagText: {
         fontSize: 12,
         alignSelf: 'flex-end'
-    }
+    },
+    icon: {
+        width: 90,
+        height: 70,
+        padding: 10,
+        marginBottom: 5
+    },
 });
