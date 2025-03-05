@@ -116,6 +116,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(255, 255, 255, 0.8)', // Semi-transparent background
         paddingVertical: 10,
 		paddingHorizontal: 10,
+		marginBottom: 10,
         borderRadius: 20, // Rounded effect
         elevation: 3, // Adds a shadow for depth
     },
