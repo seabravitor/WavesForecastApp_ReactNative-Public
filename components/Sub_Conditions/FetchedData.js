@@ -25,9 +25,9 @@ export default function FetchedData(props) {
 				<Text style={styles.rowText}>Clouds:</Text>
 				<Text style={styles.rowText}>Water Temp:</Text>
 				<Text style={styles.rowText}>Wave Height:</Text>
-				<Text style={styles.rowText}>Wave Dir:</Text>
+				<Text style={styles.rowText}>Wave Direction:</Text>
 				<Text style={styles.rowText}>Wind Speed:</Text>
-				<Text style={styles.rowText}>Wind Dir:</Text>
+				<Text style={styles.rowText}>Wind Direction:</Text>
 			</View>
 			<View style={styles.iconsColumn}>
 				<Text style={styles.rowText}>🌡</Text>
