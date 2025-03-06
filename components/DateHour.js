@@ -123,7 +123,7 @@ export default function DateHour({ data }) {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 10,
+        marginTop: '5',
         width: '100%',
         alignItems: 'center',
     },
@@ -131,7 +131,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: '100%', // Adjust width to fit within the screen
-        marginBottom: 10,
     },
     dropdownDay: {
         width: '60%', // Ensure both dropdowns fit properly
@@ -142,14 +141,16 @@ const styles = StyleSheet.create({
         borderColor: 'rgb(192, 192, 192)',
     },
     navigation: {
+        marginTop: '2%',
         flexDirection: 'row',
-        alignItems: 'flex-end',
+        // alignItems: 'flex-end',
         justifyContent: 'center', // Centers all elements in the row
         width: '100%',
+        height: '100%',
         borderRadius: 6,
     },
     arrowButton: {
-        zIndex: 1
+        zIndex: 1,
     },
     arrowText: {
         fontSize: RFPercentage(3,5),

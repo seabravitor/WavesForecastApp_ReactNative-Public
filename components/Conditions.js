@@ -5,11 +5,9 @@ import FetchedData from './Sub_Conditions/FetchedData';
 export default function Conditions(props) {
 	return (
 		<View style={styles.container}>
-			<View style={styles.grid}>
-				<View style={styles.dataContainer}>
+				<View>
 					<FetchedData individualData={props.waves} />
 				</View>
-			</View>
 		</View>
 	);
 }
@@ -17,6 +15,7 @@ export default function Conditions(props) {
 const styles = StyleSheet.create({
 	container: {
 		width: '120%',
-		paddingBottom: 2,
+		height: '100%',
+		marginTop: '12%' // Margin space between arrows and conditions
 	},
 });

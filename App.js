@@ -56,7 +56,7 @@ export default function App() {
                     <View style={styles.hideModal}>
                         <View style={styles.modalView}>
                             <Pressable style={styles.buttonClose} onPress={() => setForecastModalVisible(false)}>
-                                <Image style={styles.error} source={require('./assets/error2.png')} />
+                                <Image style={styles.error} source={require('./assets/error.png')} />
                             </Pressable>
                             <ForecastModal />
                         </View>
@@ -81,7 +81,7 @@ export default function App() {
                 <View style={styles.hideModal}>
                     <View style={styles.modalView}>
                         <Pressable style={styles.buttonClose} onPress={() => setInfoModalVisible(false)}>
-                            <Image style={styles.error} source={require('./assets/error2.png')} />
+                            <Image style={styles.error} source={require('./assets/error.png')} />
                         </Pressable>
                         <InfoModal />
                     </View>
@@ -100,10 +100,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     openModal: {
-        position: 'absolute',
+        // position: 'absolute',
         paddingBottom: '50%',
         paddingTop: '80%',
-        marginHorizontal: '40%',
+        marginHorizontal: '38%',
         zIndex: 1,
     },
     earth: {
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
 	surfTextContainer: {
-        alignSelf: 'center',
+        // alignSelf: 'center',
         backgroundColor: 'rgba(255, 255, 255, 0.8)', // Semi-transparent background
         paddingVertical: 10,
 		paddingHorizontal: 10,
@@ -128,10 +128,10 @@ const styles = StyleSheet.create({
     },
     hideModal: {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent:'center',
         alignItems: 'center',
         marginHorizontal: '10%',
-        maxHeight: '90%',
+        maxHeight: '100%',
         maxWidth: '80%',
     },
     modalView: {
@@ -150,8 +150,8 @@ const styles = StyleSheet.create({
     error: {
         marginRight: '20%',
         alignSelf: 'flex-end',
-        width: '50%',
-        height: '60%',
+        width: '40%',
+        height: '50%',
         resizeMode: 'contain',
     },
     buttonClose: {

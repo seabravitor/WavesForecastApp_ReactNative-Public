@@ -59,26 +59,22 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		width: '100%',
-		padding: 10,
+		paddingHorizontal: 10,
+		height: '68%',
 		borderRadius: 8,
 		shadowColor: '#000',
 		shadowOffset: { width: 0, height: 2 },
 		shadowOpacity: 0.1,
 		shadowRadius: 4,
-		elevation: 3,
 		backgroundColor: '#f5f5f5',
 	},
 	iconsColumn: {
-		flex: 1,
 		alignItems: 'center',
 	},
 	labelsColumn: {
-		flex: 2,
 		alignItems: 'flex-start',
 	},
 	dataColumn: {
-		flex: 2,
 		alignItems: 'flex-start',
 	},
 	rowText: {
