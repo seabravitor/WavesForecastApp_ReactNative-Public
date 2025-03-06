@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- App Transport Security -->
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <false/>
+    </dict>
+
+    <!-- Location Usage Permissions -->
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>This app requires your location to provide accurate weather forecasts for surfing.</string>
+
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>This app requires location access even when closed to update surf reports.</string>
+
+    <!-- Internet Access (Required for API Calls) -->
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+
+    <!-- Google Places API (Required for Autocomplete) -->
+    <key>NSLocationUsageDescription</key>
+    <string>This app requires location access to provide nearby surf spot recommendations.</string>
+
+</dict>
+</plist>
