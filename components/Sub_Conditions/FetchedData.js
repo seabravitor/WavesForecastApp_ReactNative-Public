@@ -5,10 +5,10 @@ import { RFPercentage } from 'react-native-responsive-fontsize';
 export default function FetchedData(props) {
 	// Function to convert degrees into cardinal directions
 	const getDirection = (degrees) => {
-		if (degrees >= 350 || degrees < 10) return 'North (N)';
+		if (degrees >= 350 || degrees < 10) return `${props.individualData.waveDirection.sg} + North (N)`
 		if (degrees >= 10 && degrees < 80) return 'Northeast (NE)';
 		if (degrees >= 80 && degrees < 100) return 'East (E)';
-		if (degrees >= 100 && degrees < 170) return 'Southeast (SE)';
+		if (degrees >= 100 && degrees < 170) return `${props.individualData.waveDirection.sg} Southeast (SE)`;
 		if (degrees >= 170 && degrees < 190) return 'South (S)';
 		if (degrees >= 190 && degrees < 260) return 'Southwest (SW)';
 		if (degrees >= 260 && degrees < 280) return 'West (W)';
@@ -47,8 +47,10 @@ export default function FetchedData(props) {
 				<Text style={styles.rowText}>{props.individualData.waterTemperature.sg}ºC</Text>
 				<Text style={styles.rowText}>{props.individualData.waveHeight.sg}m</Text>
 				<Text style={styles.rowText}>{getDirection(props.individualData.waveDirection.sg)}</Text>
+				{/* <Text style={styles.rowText}>{props.individualData.waveDirection.sg}</Text> */}
 				<Text style={styles.rowText}>{props.individualData.windSpeed.sg} km/h</Text>
-				<Text style={styles.rowText}>{getDirection(props.individualData.windDirection20m.sg)}</Text>
+				{/* <Text style={styles.rowText}>{getDirection(props.individualData.windDirection20m.sg)}</Text> */}
+				<Text style={styles.rowText}>{props.individualData.windDirection20m.sg}</Text>
 			</View>
 		</View>
 	);
