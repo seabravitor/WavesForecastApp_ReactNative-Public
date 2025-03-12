@@ -6,13 +6,13 @@ export default function FetchedData(props) {
 	// Function to convert degrees into cardinal directions
 	const getDirection = (degrees) => {
 		if (degrees >= 350 || degrees < 10) return `${props.individualData.waveDirection.sg} + North (N)`
-		if (degrees >= 10 && degrees < 80) return 'Northeast (NE)';
-		if (degrees >= 80 && degrees < 100) return 'East (E)';
+		if (degrees >= 10 && degrees < 80) return `${props.individualData.waveDirection.sg} Northeast (NE)`;
+		if (degrees >= 80 && degrees < 100) return `${props.individualData.waveDirection.sg} East (E)`;
 		if (degrees >= 100 && degrees < 170) return `${props.individualData.waveDirection.sg} Southeast (SE)`;
-		if (degrees >= 170 && degrees < 190) return 'South (S)';
-		if (degrees >= 190 && degrees < 260) return 'Southwest (SW)';
-		if (degrees >= 260 && degrees < 280) return 'West (W)';
-		if (degrees >= 280 && degrees < 350) return 'Northwest (NW)';
+		if (degrees >= 170 && degrees < 190) return `${props.individualData.waveDirection.sg} South (S)`;
+		if (degrees >= 190 && degrees < 260) return `${props.individualData.waveDirection.sg} Southwest (SW)`;
+		if (degrees >= 260 && degrees < 280) return `${props.individualData.waveDirection.sg} West (W)`;
+		if (degrees >= 280 && degrees < 350) return `${props.individualData.waveDirection.sg} Northwest (NW)`;
 		return 'Unknown';
 	};
 
